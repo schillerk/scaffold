@@ -4,9 +4,10 @@ import { useStateValue } from "Core/stateManager";
 
 import { Datum } from "../mockData";
 
-import Spacing from "Shared/Spacing";
+import Button from "Shared/Button";
 import Dropdown from "Shared/Dropdown";
 import DropdownItem from "Shared/DropdownItem";
+import Spacing from "Shared/Spacing";
 import Title from "Shared/Title";
 
 export default function TimelinePage() {
@@ -15,7 +16,7 @@ export default function TimelinePage() {
   // @ts-ignore
   const [{ input }, dispatch] = useStateValue();
 
-  const [sortBy, setSortBy] = useState("Most Recent");
+  const [sortBy, setSortBy] = useState("Most Relevant");
   const [sortByOpen, setSortByOpen] = useState(false);
 
   const filteredData = data.filter((datum: Datum) =>
@@ -36,9 +37,22 @@ export default function TimelinePage() {
         label={sortBy}
         open={sortByOpen}
         onClick={() => setSortByOpen(!sortByOpen)}
+        onClickOutside={() => setSortByOpen(false)}
       >
-        <DropdownItem>Most Recent</DropdownItem>
-        <DropdownItem>Most Relevant</DropdownItem>
+        <DropdownItem
+          onClick={() => {
+            setSortBy("Most Relevant");
+            setSortByOpen(false);
+          }}
+          label="Most Relevant"
+        />
+        <DropdownItem
+          onClick={() => {
+            setSortBy("Most Recent");
+            setSortByOpen(false);
+          }}
+          label="Most Recent"
+        />
       </Dropdown>
       {events}
     </div>

@@ -4,14 +4,14 @@ import { css, withStyles, withStylesProps } from "Core/withStyles";
 import Button from "Shared/Button";
 
 type Props = {
-  children: React.ReactNode;
+  label: string;
   onClick?: () => {};
 } & withStylesProps;
 
-function DropdownItem({ children, onClick, styles }: Props) {
+function DropdownItem({ label, onClick, styles }: Props) {
   return (
     <div {...css(styles.dropdown_item)} onClick={onClick}>
-      {children}
+      {label}
     </div>
   );
 }
