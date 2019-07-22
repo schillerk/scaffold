@@ -4,7 +4,7 @@ import { useStateValue } from "Core/stateManager";
 
 import { Datum } from "../mockData";
 
-import Button from "Shared/Button";
+import Input from "Shared/Input";
 import Dropdown from "Shared/Dropdown";
 import DropdownItem from "Shared/DropdownItem";
 import Spacing from "Shared/Spacing";
@@ -54,6 +54,15 @@ export default function TimelinePage() {
           label="Most Recent"
         />
       </Dropdown>
+      <Input
+        value={input}
+        onChange={(e: { target: HTMLInputElement }) =>
+          dispatch({
+            property: "input",
+            value: e.target.value
+          })
+        }
+      />
       {events}
     </div>
   );
