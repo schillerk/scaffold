@@ -67,7 +67,7 @@ export default withStyles(({ color, ui, transition }: withStylesProps) => ({
       backgroundColor: color.primary[4],
       borderColor: color.primary[4]
     },
-    ":focus": {
+    ":active": {
       boxShadow: `0 0 0 2px ${color.primary[0]}`
     }
   }
