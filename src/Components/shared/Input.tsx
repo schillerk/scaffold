@@ -15,7 +15,7 @@ export default withStyles(({ color, transition, ui }: withStylesProps) => ({
     border: `${ui.borderWidth}px solid ${color.neutral[3]}`,
     borderRadius: ui.borderRadius,
     color: color.text[1],
-    padding: `${ui.unit}px ${2 * ui.unit}px`,
+    padding: ui.unit,
     transition: transition(["border-color", "box-shadow"]),
     ":hover": {
       borderColor: color.primary[3]

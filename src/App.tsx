@@ -3,19 +3,25 @@ import { StateProvider } from "Core/stateManager";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import { css, withStyles, withStylesProps } from "Core/withStyles";
 
+import SummaryPage from "Components/SummaryPage";
+import TimelinePage from "Components/TimelinePage";
+
 import SideBar from "Shared/SideBar";
 import Button from "Shared/Button";
 import Spacing from "Shared/Spacing";
-import SummaryPage from "Components/SummaryPage";
+
+import { Datum, MOCK_DATA } from "./mockData";
 
 enum StateProperties {
   count = "count",
-  input = "input"
+  input = "input",
+  data = "data"
 }
 
 type AppState = {
   [StateProperties.count]: number;
   [StateProperties.input]: string;
+  [StateProperties.data]: Datum[];
 };
 
 type Action = {
@@ -62,18 +68,24 @@ const reducer = (state: AppState, action: Action) => {
 
 const initialState: AppState = {
   count: 0,
-  input: ""
+  input: "",
+  data: MOCK_DATA
 };
 
 function App({ styles }: withStylesProps) {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
       <BrowserRouter>
-        <div>
+        <div {...css(styles.app)}>
           <SideBar>
             <Spacing all={1}>
               <Button borderless inverted>
                 <Link to="/summary">Summary</Link>
+              </Button>
+            </Spacing>
+            <Spacing all={1}>
+              <Button borderless inverted>
+                <Link to="/timeline">Timeline</Link>
               </Button>
             </Spacing>
             <Spacing all={1}>
@@ -83,9 +95,12 @@ function App({ styles }: withStylesProps) {
               <Button>Timeline</Button>
             </Spacing>
           </SideBar>
-          <Switch>
-            <Route exact path="/summary" component={SummaryPage} />
-          </Switch>
+          <Spacing all={3}>
+            <Switch>
+              <Route exact path="/summary" component={SummaryPage} />
+              <Route exact path="/timeline" component={TimelinePage} />
+            </Switch>
+          </Spacing>
         </div>
       </BrowserRouter>
     </StateProvider>

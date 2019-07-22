@@ -48,7 +48,10 @@ const theme = {
   ui: {
     unit: 8,
     borderRadius: 3,
-    borderWidth: 1
+    borderWidth: 1,
+    fontSize: {
+      large: 20
+    }
   },
   transition: properties =>
     properties.map(property => `${property} 200ms ease-in-out`).join(", ")

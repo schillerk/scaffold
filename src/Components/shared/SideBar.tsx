@@ -1,6 +1,8 @@
 import * as React from "react";
 import { css, withStyles, withStylesProps } from "Core/withStyles";
 
+import Spacing from "Shared/Spacing";
+
 type Props = {
   width?: number;
 } & withStylesProps;
@@ -8,7 +10,7 @@ type Props = {
 function SideBar({ children, styles, width = 200 }: Props) {
   return (
     <div style={{ width }} {...css(styles.sidebar)}>
-      {children}
+      <Spacing all={3}>{children}</Spacing>
     </div>
   );
 }
