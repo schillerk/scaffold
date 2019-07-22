@@ -2,7 +2,7 @@ import * as React from "react";
 import { createContext, useContext, useReducer } from "react";
 
 type State = {
-  reducer: ({}, {}) => {};
+  reducer: any;
   initialState: {};
   children: React.ReactNode;
 };

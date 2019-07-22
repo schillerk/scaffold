@@ -1,35 +1,8 @@
-import * as React from "react";
-import { useStateValue } from "../state";
+import { useStateValue } from "../stateManager";
 
-type HeaderProps = {
-  title: string;
-};
-
-export default function Header({ title }: HeaderProps) {
+export default function Header() {
   // @ts-ignore-next-line
-  const [{ count }, dispatch] = useStateValue();
+  const [{ count }] = useStateValue();
 
-  return (
-    <>
-      <button
-        onClick={() =>
-          dispatch({
-            type: "increment"
-          })
-        }
-      >
-        Increment
-      </button>
-      <button
-        onClick={() =>
-          dispatch({
-            type: "decrement"
-          })
-        }
-      >
-        Decrement
-      </button>
-      {count}
-    </>
-  );
+  return count;
 }
