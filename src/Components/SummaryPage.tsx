@@ -1,9 +1,8 @@
 import * as React from "react";
-import { css, withStyles, withStylesProps } from "Core/withStyles";
 import { useStateValue } from "Core/stateManager";
 import Input from "Shared/Input";
 
-function Summary({ children }: withStylesProps) {
+export default function SummaryPage() {
   // @ts-ignore
   const [{ input }, dispatch] = useStateValue();
 
@@ -19,10 +18,3 @@ function Summary({ children }: withStylesProps) {
     />
   );
 }
-
-export default withStyles(({ color, ui }: withStylesProps) => ({
-  sidebar: {
-    display: "flex",
-    flexDirection: "column"
-  }
-}))(Summary);
