@@ -1,15 +1,15 @@
 import * as React from "react";
-import { useStateValue } from "../stateManager";
-import { css, withStyles, withStylesProps } from "../withStyles";
+import { useStateValue } from "Core/stateManager";
 
-function CountControls({ styles }: withStylesProps) {
+import Button from "Shared/Button";
+
+export default function CountControls() {
   // @ts-ignore-next-line
   const [{ count }, dispatch] = useStateValue();
 
   return (
     <>
-      <button
-        {...css(styles.button)}
+      <Button
         onClick={() =>
           dispatch({
             property: "count",
@@ -18,8 +18,8 @@ function CountControls({ styles }: withStylesProps) {
         }
       >
         Increment
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() =>
           dispatch({
             property: "count",
@@ -28,13 +28,7 @@ function CountControls({ styles }: withStylesProps) {
         }
       >
         Decrement
-      </button>
+      </Button>
     </>
   );
 }
-
-export default withStyles(({ color }: withStylesProps) => ({
-  button: {
-    background: color.primary
-  }
-}))(CountControls);

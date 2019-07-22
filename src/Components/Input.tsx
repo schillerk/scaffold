@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useStateValue } from "../stateManager";
+import { useStateValue } from "Core/stateManager";
 
 export default function Input() {
   // @ts-ignore-next-line

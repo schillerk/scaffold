@@ -1,9 +1,9 @@
 import * as React from "react";
-import { StateProvider } from "./stateManager";
+import { StateProvider } from "Core/stateManager";
 
-import CountControls from "./Components/CountControls";
-import Header from "./Components/Header";
-import Input from "./Components/Input";
+import CountControls from "Components/CountControls";
+import Header from "Components/Header";
+import Input from "Components/Input";
 
 enum StateProperties {
   count = "count",

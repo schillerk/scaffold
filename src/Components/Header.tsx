@@ -1,4 +1,4 @@
-import { useStateValue } from "../stateManager";
+import { useStateValue } from "Core/stateManager";
 
 export default function Header() {
   // @ts-ignore-next-line
