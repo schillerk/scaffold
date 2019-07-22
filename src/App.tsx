@@ -1,34 +1,37 @@
 import * as React from "react";
-import { createContext, useState, useReducer } from "react";
+import { StateProvider } from "./state";
+
 import Header from "./Components/Header";
 
-export const StateContext = createContext({
-  counter: 0
-});
+type AppState = {
+  count: number;
+};
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "increment":
-      return { count: state.count + 1 };
-
-    case "decrement":
-      return { count: state.count - 1 };
-
-    default:
-      return state;
-  }
+type Action = {
+  type: "increment" | "decrement";
 };
 
 export const App = () => {
-  const [count, setCount] = useState(0);
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
+  const initialState = {
+    count: 0
+  };
+
+  const reducer = (state: AppState, action: Action) => {
+    switch (action.type) {
+      case "increment":
+        return { count: state.count + 1 };
+
+      case "decrement":
+        return { count: state.count - 1 };
+
+      default:
+        return state;
+    }
+  };
 
   return (
-    <StateContext.Provider value={{ counter: 0 }}>
+    <StateProvider initialState={initialState} reducer={reducer}>
       <Header title="Hello World" />
-      <div>{state.count}</div>
-      <button onClick={() => dispatch({ type: "increment" })}>Increment</button>
-      <button onClick={() => dispatch({ type: "decrement" })}>Decrement</button>
-    </StateContext.Provider>
+    </StateProvider>
   );
 };

@@ -1,14 +1,35 @@
 import * as React from "react";
-import { StateContext } from "../App";
+import { useStateValue } from "../state";
 
 type HeaderProps = {
   title: string;
 };
 
 export default function Header({ title }: HeaderProps) {
+  // @ts-ignore-next-line
+  const [{ count }, dispatch] = useStateValue();
+
   return (
-    <StateContext.Consumer>
-      {value => <div>{value.counter}</div>}
-    </StateContext.Consumer>
+    <>
+      <button
+        onClick={() =>
+          dispatch({
+            type: "increment"
+          })
+        }
+      >
+        Increment
+      </button>
+      <button
+        onClick={() =>
+          dispatch({
+            type: "decrement"
+          })
+        }
+      >
+        Decrement
+      </button>
+      {count}
+    </>
   );
 }

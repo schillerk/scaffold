@@ -7,6 +7,9 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "index_bundle.js"
   },
+  devServer: {
+    port: 5000
+  },
   resolve: {
     extensions: [".tsx", ".ts", ".js"]
   },
