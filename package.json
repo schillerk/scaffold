@@ -18,7 +18,9 @@
   "dependencies": {
     "@types/aphrodite": "^0.5.13",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-with-styles": "^3.2.3",
+    "react-with-styles-interface-aphrodite": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

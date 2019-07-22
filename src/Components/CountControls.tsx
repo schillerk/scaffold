@@ -1,15 +1,15 @@
 import * as React from "react";
 import { useStateValue } from "../stateManager";
-import { StyleSheet, css } from "aphrodite";
+import { css, withStyles, withStylesProps } from "../withStyles";
 
-export default function CountControls() {
+function CountControls({ styles }: withStylesProps) {
   // @ts-ignore-next-line
   const [{ count }, dispatch] = useStateValue();
 
   return (
     <>
       <button
-        className={css(styles.button)}
+        {...css(styles.button)}
         onClick={() =>
           dispatch({
             property: "count",
@@ -20,7 +20,6 @@ export default function CountControls() {
         Increment
       </button>
       <button
-        className={css(styles.button)}
         onClick={() =>
           dispatch({
             property: "count",
@@ -34,8 +33,8 @@ export default function CountControls() {
   );
 }
 
-const styles = StyleSheet.create({
+export default withStyles(({ color }: withStylesProps) => ({
   button: {
-    padding: 8
+    background: color.primary
   }
-});
+}))(CountControls);
