@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useStateValue } from "../stateManager";
+import { StyleSheet, css } from "aphrodite";
 
 export default function CountControls() {
   // @ts-ignore-next-line
@@ -8,6 +9,7 @@ export default function CountControls() {
   return (
     <>
       <button
+        className={css(styles.button)}
         onClick={() =>
           dispatch({
             property: "count",
@@ -18,6 +20,7 @@ export default function CountControls() {
         Increment
       </button>
       <button
+        className={css(styles.button)}
         onClick={() =>
           dispatch({
             property: "count",
@@ -30,3 +33,9 @@ export default function CountControls() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+    padding: 8
+  }
+});
