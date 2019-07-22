@@ -1,9 +1,9 @@
 import * as React from "react";
 import { StateProvider } from "Core/stateManager";
 
-import CountControls from "Components/CountControls";
-import Header from "Components/Header";
-import Input from "Components/Input";
+import SideBar from "Shared/SideBar";
+import Button from "Shared/Button";
+import Spacing from "Shared/Spacing";
 
 enum StateProperties {
   count = "count",
@@ -65,9 +65,14 @@ export const App = () => {
 
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
-      <Header />
-      <CountControls />
-      <Input />
+      <SideBar>
+        <Spacing all={1}>
+          <Button inverted>Summary</Button>
+        </Spacing>
+        <Spacing all={1}>
+          <Button inverted>Timeline</Button>
+        </Spacing>
+      </SideBar>
     </StateProvider>
   );
 };

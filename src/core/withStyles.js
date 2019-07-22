@@ -10,7 +10,8 @@ import {
 const theme = {
   color: {
     primary: "#FF5A5F",
-    secondary: "#00A699"
+    secondary: "#00A699",
+    bg: "#FFFFFF"
   },
   ui: {
     unit: 8,
