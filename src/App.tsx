@@ -4,6 +4,7 @@ import { StateProvider } from "Core/stateManager";
 import SideBar from "Shared/SideBar";
 import Button from "Shared/Button";
 import Spacing from "Shared/Spacing";
+import Summary from "Components/Summary";
 
 enum StateProperties {
   count = "count",
@@ -67,12 +68,18 @@ export const App = () => {
     <StateProvider initialState={initialState} reducer={reducer}>
       <SideBar>
         <Spacing all={1}>
-          <Button inverted>Summary</Button>
+          <Button borderless inverted>
+            Summary
+          </Button>
         </Spacing>
         <Spacing all={1}>
           <Button inverted>Timeline</Button>
         </Spacing>
+        <Spacing all={1}>
+          <Button>Timeline</Button>
+        </Spacing>
       </SideBar>
+      <Summary />
     </StateProvider>
   );
 };

@@ -1,15 +1,30 @@
 import * as React from "react";
-import { css, withStyles, withStylesProps } from "Core/withStyles";
+import {
+  css,
+  withStyles,
+  withStylesProps,
+  ThemeProvider
+} from "Core/withStyles";
 
 type Props = {
   onClick: () => {};
   inverted?: boolean;
 } & withStylesProps;
 
-function Button({ children, styles, onClick, inverted = false }: Props) {
+function Button({
+  children,
+  styles,
+  onClick,
+  borderless = false,
+  inverted = false
+}: Props) {
   return (
     <button
-      {...css(styles.button, inverted && styles.button_inverted)}
+      {...css(
+        styles.button,
+        !borderless && styles.button_border,
+        inverted && styles.button_inverted
+      )}
       onClick={onClick}
     >
       {children}
@@ -17,14 +32,41 @@ function Button({ children, styles, onClick, inverted = false }: Props) {
   );
 }
 
-export default withStyles(({ color, ui }: withStylesProps) => ({
+export default withStyles(({ color, ui, transition }: withStylesProps) => ({
   button: {
-    background: color.primary,
+    background: color.primary[3],
+    borderColor: color.primary[3],
+    borderRadius: ui.borderRadius,
+    borderWidth: 0,
+    color: color.neutral[0],
+    cursor: "pointer",
     padding: `${ui.unit}px ${2 * ui.unit}px`,
-    borderRadius: ui.borderRadius
+    transition: transition([
+      "background-color",
+      "border-color",
+      "color",
+      "box-shadow"
+    ]),
+    ":hover": {
+      backgroundColor: color.primary[4],
+      borderColor: color.primary[4]
+    },
+    ":focus": {
+      outline: 0,
+      boxShadow: `0 0 0 2px ${color.primary[0]}`
+    }
   },
   button_inverted: {
-    background: color.bg,
-    border: `2px solid ${color.primary}`
+    background: color.neutral[9],
+    color: color.text[2],
+    ":hover": {
+      color: color.text[0],
+      backgroundColor: color.neutral[0],
+      borderColor: color.primary[4]
+    }
+  },
+  button_border: {
+    borderWith: 0,
+    borderWidth: ui.borderWidth
   }
 }))(Button);
