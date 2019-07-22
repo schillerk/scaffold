@@ -47,13 +47,8 @@ export default withStyles(({ color, ui, transition }: withStylesProps) => ({
       "color",
       "box-shadow"
     ]),
-    ":hover": {
-      backgroundColor: color.primary[4],
-      borderColor: color.primary[4]
-    },
     ":focus": {
-      outline: 0,
-      boxShadow: `0 0 0 2px ${color.primary[0]}`
+      outline: 0
     }
   },
   button_inverted: {
@@ -67,6 +62,13 @@ export default withStyles(({ color, ui, transition }: withStylesProps) => ({
   },
   button_border: {
     borderWith: 0,
-    borderWidth: ui.borderWidth
+    borderWidth: ui.borderWidth,
+    ":hover": {
+      backgroundColor: color.primary[4],
+      borderColor: color.primary[4]
+    },
+    ":focus": {
+      boxShadow: `0 0 0 2px ${color.primary[0]}`
+    }
   }
 }))(Button);
