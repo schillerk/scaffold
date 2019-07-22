@@ -1,6 +1,7 @@
 import * as React from "react";
 import { StateProvider } from "Core/stateManager";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { css, withStyles, withStylesProps } from "Core/withStyles";
 
 import SideBar from "Shared/SideBar";
 import Button from "Shared/Button";
@@ -59,32 +60,42 @@ const reducer = (state: AppState, action: Action) => {
   }
 };
 
-export const App = () => {
-  const initialState: AppState = {
-    count: 0,
-    input: ""
-  };
+const initialState: AppState = {
+  count: 0,
+  input: ""
+};
 
+function App({ styles }: withStylesProps) {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
       <BrowserRouter>
-        <Switch>
-          <Route exact path="/summary" component={SummaryPage} />
-        </Switch>
-        <SideBar>
-          <Spacing all={1}>
-            <Button borderless inverted>
-              <Link to="/summary">Summary</Link>
-            </Button>
-          </Spacing>
-          <Spacing all={1}>
-            <Button inverted>Timeline</Button>
-          </Spacing>
-          <Spacing all={1}>
-            <Button>Timeline</Button>
-          </Spacing>
-        </SideBar>
+        <div>
+          <SideBar>
+            <Spacing all={1}>
+              <Button borderless inverted>
+                <Link to="/summary">Summary</Link>
+              </Button>
+            </Spacing>
+            <Spacing all={1}>
+              <Button inverted>Timeline</Button>
+            </Spacing>
+            <Spacing all={1}>
+              <Button>Timeline</Button>
+            </Spacing>
+          </SideBar>
+          <Switch>
+            <Route exact path="/summary" component={SummaryPage} />
+          </Switch>
+        </div>
       </BrowserRouter>
     </StateProvider>
   );
-};
+}
+
+export default withStyles(() => ({
+  app: {
+    height: "100%",
+    width: "100%",
+    display: "inline-flex"
+  }
+}))(App);

@@ -13,9 +13,10 @@ function SideBar({ children, styles, width = 200 }: Props) {
   );
 }
 
-export default withStyles(({ color, ui }: withStylesProps) => ({
+export default withStyles(() => ({
   sidebar: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    height: "100vh"
   }
 }))(SideBar);
