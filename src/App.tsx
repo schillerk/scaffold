@@ -5,6 +5,7 @@ import { css, withStyles, withStylesProps } from "Core/withStyles";
 
 import SummaryPage from "Components/SummaryPage";
 import TimelinePage from "Components/TimelinePage";
+import TablePage from "Components/TablePage";
 
 import SideBar from "Shared/SideBar";
 import Button from "Shared/Button";
@@ -99,6 +100,7 @@ function App({ styles }: withStylesProps) {
             <Switch>
               <Route exact path="/summary" component={SummaryPage} />
               <Route exact path="/timeline" component={TimelinePage} />
+              <Route exact path="/table" component={TablePage} />
             </Switch>
           </Spacing>
         </div>
